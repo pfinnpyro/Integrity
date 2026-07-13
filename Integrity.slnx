@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Domain/" />
+  <Project Path="Domain/Domain.csproj" />
+  <Project Path="Integrity.Android/Integrity.Android.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="Integrity.Application/Integrity.Application.csproj" />
+  <Project Path="Integrity.Browser/Integrity.Browser.csproj" />
+  <Project Path="Integrity.Desktop/Integrity.Desktop.csproj" />
+  <Project Path="Integrity.Domain/Integrity.Domain.csproj" />
+  <Project Path="Integrity.Infrastructure/Integrity.Infrastructure.csproj" />
+  <Project Path="Integrity.iOS/Integrity.iOS.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="Integrity.UI/Integrity.UI.csproj" />
+</Solution>
