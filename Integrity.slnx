@@ -11,5 +11,6 @@
   <Project Path="Integrity.iOS/Integrity.iOS.csproj">
     <Deploy />
   </Project>
+  <Project Path="Integrity.Presentation/Integrity.Presentation.csproj" />
   <Project Path="Integrity.UI/Integrity.UI.csproj" />
 </Solution>

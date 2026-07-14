@@ -1,8 +1,8 @@
-namespace Integrity.Application.Models;
+namespace Integrity.Application.Models.Configuration;
 
 public class ConnectionProfile
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
     
     public string Name { get; set; } = "Default";
     
@@ -13,4 +13,6 @@ public class ConnectionProfile
     public string Username { get; set; } = string.Empty;
 
     public bool IntegratedSecurity { get; set; }
+
+    public bool IsActive { get; set; } = false;
 }

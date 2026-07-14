@@ -1,5 +1,5 @@
 using Integrity.Application.Interfaces;
-using Integrity.Application.Models;
+using Integrity.Application.Models.Configuration;
 using Integrity.Infrastructure.Configuration;
 using Microsoft.Data.SqlClient;
 
