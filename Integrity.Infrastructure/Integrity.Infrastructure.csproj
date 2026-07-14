@@ -10,4 +10,8 @@
       <ProjectReference Include="..\Integrity.Application\Integrity.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Data.SqlClient" />
+    </ItemGroup>
+
 </Project>

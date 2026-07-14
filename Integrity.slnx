@@ -1,9 +1,8 @@
 <Solution>
-  <Folder Name="/Domain/" />
-  <Project Path="Domain/Domain.csproj" />
   <Project Path="Integrity.Android/Integrity.Android.csproj">
     <Deploy />
   </Project>
+  <Project Path="Integrity.API/Integrity.API.csproj" />
   <Project Path="Integrity.Application/Integrity.Application.csproj" />
   <Project Path="Integrity.Browser/Integrity.Browser.csproj" />
   <Project Path="Integrity.Desktop/Integrity.Desktop.csproj" />

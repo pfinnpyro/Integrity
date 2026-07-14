@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Integrity.Application\Integrity.Application.csproj" />
         <ProjectReference Include="..\Integrity.UI\Integrity.UI.csproj" />
     </ItemGroup>
 </Project>
