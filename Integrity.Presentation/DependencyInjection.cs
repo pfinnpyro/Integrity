@@ -11,7 +11,8 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddSingleton<ShellViewModel>();
-        services.AddTransient<ApplicationHost>();
+        services.AddTransient<ApplicationCoordinator>();
+        services.AddTransient<ApplicationCoordinator>();
         services.AddTransient<INavigationService, NavigationService>();
     
         return services;

@@ -13,7 +13,6 @@
       <Folder Include="Abstractions\Persistence\" />
       <Folder Include="Abstractions\Security\" />
       <Folder Include="Commands\" />
-      <Folder Include="Models\Results\" />
     </ItemGroup>
 
     <ItemGroup>

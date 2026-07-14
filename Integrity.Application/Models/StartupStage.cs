@@ -1,4 +1,4 @@
-namespace Integrity.Application.Models.Results;
+namespace Integrity.Application.Models;
 
 public enum StartupStage
 {

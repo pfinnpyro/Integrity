@@ -1,12 +1,7 @@
 using System;
-using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
-using System.Linq;
 using Avalonia.Markup.Xaml;
-using Integrity.Application.Services;
-using Integrity.Presentation.ViewModels;
+using Integrity.Presentation.Services;
 using Integrity.Views;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,10 +22,7 @@ public partial class App : Avalonia.Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-            
-            var host = _serviceProvider.GetRequiredService<IApplicationHost>();
 
-            await host.StartAsync();
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime singleViewFactoryApplicationLifetime)
         {
@@ -41,6 +33,10 @@ public partial class App : Avalonia.Application
         {
             singleViewPlatform.MainView = _serviceProvider.GetRequiredService<MainView>();
         }
+                    
+        var coordinator = _serviceProvider.GetRequiredService<ApplicationCoordinator>();
+
+        await coordinator.StartAsync();
 
         base.OnFrameworkInitializationCompleted();
     }

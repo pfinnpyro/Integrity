@@ -1,4 +1,4 @@
-using Integrity.Application.Models.Results;
+using Integrity.Application.Models;
 
 namespace Integrity.Application.Models;
 
