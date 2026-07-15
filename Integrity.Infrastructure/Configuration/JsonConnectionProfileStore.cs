@@ -1,6 +1,9 @@
 using Integrity.Application.Interfaces;
 using System.Text.Json;
+using Integrity.Application.Models;
+using Integrity.Infrastructure.Database;
 using Integrity.Application.Models.Configuration;
+using Integrity.Application.Models.Types;
 
 namespace Integrity.Infrastructure.Configuration;
 
@@ -9,6 +12,7 @@ public class JsonConnectionProfileStore : IConnectionProfileStore
 
     
     private readonly string _connectionProfileFilePath;
+    private readonly SqlConnectionProvider _connectionProvider;
 
     public JsonConnectionProfileStore()
     {
@@ -25,9 +29,50 @@ public class JsonConnectionProfileStore : IConnectionProfileStore
         _connectionProfileFilePath = Path.Combine(profileDirectory, "ConnectionProfiles.json");
 }
     //TODO: Rename to HasConnectionProfilesAsync and handle verifying that one or more profiles exist
-    public Task<bool> HasConnectionProfileAsync()
+    public async Task<OperationResult<Unit>> HasConnectionProfilesAsync()
     {
-        return Task.FromResult(File.Exists(_connectionProfileFilePath));
+        var context = new OperationContext
+        {
+            EntityType = nameof(ConnectionProfile)
+        };
+
+        try
+        {
+            var profiles = await GetAllConnectionProfilesAsync();
+
+            foreach (var profile in profiles.Value)
+            {
+                var validation = _connectionProvider.ValidateConnectionProfile(profile);
+                if (!validation.IsSuccess)
+                {
+                    return OperationResult<Unit>.Failure(context, validation.Errors.ToArray());
+                }
+            }
+            
+            if ( !profiles.IsSuccess )
+            {
+                return OperationResult<Unit>.Failure(context, profiles.Errors.ToArray());
+            }
+            
+            if ( profiles.Value.Count == 0 )
+            {
+                return OperationResult<Unit>.Failure(context, new Error(
+                    "INTERNAL",
+                    "JsonConnectionProfileStore",
+                    ErrorType.Configuration,
+                    "No connection profiles found"));
+            }
+        }
+        catch ( Exception ex)
+        {
+            return OperationResult<Unit>.Failure(context, new Error(
+                "INTERNAL",
+                "JsonConnectionProfileStore",
+                ErrorType.Infrastructure,
+                ex.Message));
+        }
+        return OperationResult.Success();
+        
     }
 
     public async Task<Guid> SaveConnectionProfileAsync(ConnectionProfile profile)
@@ -79,40 +124,88 @@ public class JsonConnectionProfileStore : IConnectionProfileStore
         return null;
     }
 
-    public async Task<List<ConnectionProfile>> GetAllConnectionProfilesAsync()
+    public async Task<OperationResult<List<ConnectionProfile>>> GetAllConnectionProfilesAsync()
     {
-        if(File.Exists(_connectionProfileFilePath))
+        var context = new OperationContext
         {
-            var json = await File.ReadAllTextAsync(_connectionProfileFilePath);
-            return JsonSerializer.Deserialize<List<ConnectionProfile>>(json)
-                   ?? [];
+            EntityType = nameof(ConnectionProfile)
+        };
+
+        try
+        {
+            if(File.Exists(_connectionProfileFilePath))
+            {
+                var json = await File.ReadAllTextAsync(_connectionProfileFilePath);
+                var profiles = JsonSerializer.Deserialize<List<ConnectionProfile>>(json)
+                       ?? [];
+                return OperationResult<List<ConnectionProfile>>.Success(profiles);
+            }
+        }
+        catch(Exception ex)
+        {
+            return OperationResult<List<ConnectionProfile>>.Failure(context, 
+                new Error("INTERNAL", "JsonConnectionProfileStore", ErrorType.Infrastructure, ex.Message));
         }
 
-        return [];
+        return OperationResult<List<ConnectionProfile>>.Failure(context, 
+            new Error("INTERNAL", "JsonConnectionProfileStore", ErrorType.Infrastructure, "File not found"));
     }
 
-    public async Task DeleteConnectionProfileAsync(Guid profileId)
+    public async Task<OperationResult<Unit>> DeleteConnectionProfileAsync(Guid profileId)
     {
+        var context = new OperationContext
+        {
+            EntityId = profileId,
+            EntityType = nameof(ConnectionProfile),
+        };
+        
         var existingProfiles = await GetAllConnectionProfilesAsync();
-        existingProfiles.RemoveAll(x => x.Id == profileId);
+        
+        if(!existingProfiles.IsSuccess)
+        {
+            return OperationResult<Unit>.Failure(context, existingProfiles.Errors.ToArray());
+
+        }
+
+        existingProfiles.Value.RemoveAll(x => x.Id == profileId);
         var json = JsonSerializer.Serialize(existingProfiles, new JsonSerializerOptions { WriteIndented = true });
         await File.WriteAllTextAsync(_connectionProfileFilePath, json);
+
+        return OperationResult.Success();
     }
     
-    public async Task SetActiveConnectionProfileAsync(Guid profileId)
+    public async Task<OperationResult<Unit>> SetActiveConnectionProfileAsync(Guid profileId)
     {
-        var profiles = await GetAllConnectionProfilesAsync();
-        var targetProfile = profiles.FirstOrDefault(x => x.Id == profileId);
-        if(targetProfile == null)
+        var context = new OperationContext
         {
-            throw new InvalidOperationException("Profile not found");
-        }
-        foreach (var profile in profiles)
+            EntityId = profileId,
+            EntityType = nameof(ConnectionProfile),
+        };
+        try
         {
-            profile.IsActive = profile.Id == profileId;
-        }
+            var existingProfiles = await GetAllConnectionProfilesAsync();
+            var targetProfile = existingProfiles.Value.FirstOrDefault(x => x.Id == profileId);
+            if(targetProfile == null)
+            {
+                throw new InvalidOperationException("Profile not found");
+            }
+            foreach (var profile in existingProfiles.Value)
+            {
+                profile.IsActive = profile.Id == profileId;
+            }
 
-        var json = JsonSerializer.Serialize(profiles, new JsonSerializerOptions { WriteIndented = true });
-        await File.WriteAllTextAsync(_connectionProfileFilePath, json);
+            var json = JsonSerializer.Serialize(existingProfiles, new JsonSerializerOptions { WriteIndented = true });
+            await File.WriteAllTextAsync(_connectionProfileFilePath, json);
+        }
+        catch (Exception ex)
+        {
+            return OperationResult<Unit>.Failure(context, new Error(
+                "INTERNAL",
+                "JsonConnectionProfileStore",
+                ErrorType.Infrastructure,
+                ex.Message));
+        }
+        
+        return OperationResult.Success();
     }
 }

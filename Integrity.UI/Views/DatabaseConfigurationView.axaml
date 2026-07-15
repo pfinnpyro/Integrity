@@ -5,10 +5,6 @@
     x:Class="Integrity.Views.DatabaseConfigurationView"
     x:DataType="vm:DatabaseConfigurationViewModel"
     >
-    
-    <Design.DataContext>
-        <vm:DatabaseConfigurationViewModel />
-    </Design.DataContext>
 
     <StackPanel
         HorizontalAlignment="Center"
@@ -19,11 +15,22 @@
         <TextBox PlaceholderText="Server: " Text="{Binding Server}"/>
         <TextBox PlaceholderText="Database: " Text="{Binding Database}"/>
         <TextBox PlaceholderText="Username: " Text="{Binding Username}"/>
-        <TextBox PlaceholderText="Password: "/>
-        
+        <TextBox PlaceholderText="Password: " Text="{Binding Password}"/>
+        <CheckBox IsChecked="{Binding IntegratedSecurity}"
+                  Content="Integrated Security Enabled?" />
+        <CheckBox IsChecked="{Binding TrustCertificate}" />
+        <Button
+            Content="Test"
+            Command="{Binding TestCommand}" />
         <Button
             Content="Save"
-            Command="{Binding SaveAsync}"/>
+            Command="{Binding SaveCommand}"/>
+        
+        <TextBlock
+            Text="{Binding ConnectionStatus}"
+            Height="200"
+            Width="500"
+            TextWrapping="Wrap"/>
         
     </StackPanel>
 

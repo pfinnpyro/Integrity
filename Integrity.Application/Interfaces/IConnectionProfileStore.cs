@@ -1,10 +1,12 @@
+using Integrity.Application.Models;
 using Integrity.Application.Models.Configuration;
+using Integrity.Application.Models.Types;
 
 namespace Integrity.Application.Interfaces;
 
 public interface IConnectionProfileStore
 { 
-    Task<List<ConnectionProfile>> GetAllConnectionProfilesAsync();
+    Task<OperationResult<List<ConnectionProfile>>> GetAllConnectionProfilesAsync();
 
     Task<ConnectionProfile?> GetConnectionProfileAsync(Guid profileId);
     
@@ -12,7 +14,7 @@ public interface IConnectionProfileStore
     
     Task<Guid> SaveConnectionProfileAsync(ConnectionProfile profile);
     
-    Task SetActiveConnectionProfileAsync(Guid profileId);
-    Task<bool> HasConnectionProfileAsync();
-    Task DeleteConnectionProfileAsync(Guid profileId);
+    Task<OperationResult<Unit>> SetActiveConnectionProfileAsync(Guid profileId);
+    Task<OperationResult<Unit>> HasConnectionProfilesAsync();
+    Task<OperationResult<Unit>> DeleteConnectionProfileAsync(Guid profileId);
 }

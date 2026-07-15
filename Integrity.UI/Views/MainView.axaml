@@ -4,6 +4,5 @@
              x:Class="Integrity.Views.MainView"
              x:DataType="vm:ShellViewModel">
 
-    <ContentControl Content="{Binding CurrentWorkspace}" />
-
+    <ContentControl Content="{Binding CurrentWorkspace}"/>
 </UserControl>

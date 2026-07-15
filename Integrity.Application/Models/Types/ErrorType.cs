@@ -1,7 +1,8 @@
-namespace Integrity.Application.Models;
+namespace Integrity.Application.Models.Types;
 
 public enum ErrorType
 {
+    Configuration,
     Validation,
     BusinessRule,
     Infrastructure,

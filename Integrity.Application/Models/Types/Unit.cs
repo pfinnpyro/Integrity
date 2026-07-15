@@ -1,4 +1,4 @@
-namespace Integrity.Application.Models;
+namespace Integrity.Application.Models.Types;
 
 public class Unit
 {

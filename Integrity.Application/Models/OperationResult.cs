@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using Integrity.Application.Models.Types;
 
 namespace Integrity.Application.Models;
 

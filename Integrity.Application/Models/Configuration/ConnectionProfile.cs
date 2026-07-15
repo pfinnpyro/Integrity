@@ -13,6 +13,10 @@ public sealed class ConnectionProfile
     public string Username { get; set; } = string.Empty;
 
     public bool IntegratedSecurity { get; set; }
+    
+    public bool TrustCertificate { get; set; }
 
     public bool IsActive { get; set; } = false;
+    
+    public DatabaseProvider Provider { get; set; } = DatabaseProvider.MsSqlServer;
 }

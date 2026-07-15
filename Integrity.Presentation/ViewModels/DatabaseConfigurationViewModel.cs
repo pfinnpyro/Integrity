@@ -7,57 +7,74 @@ using Integrity.Presentation.Navigation;
 
 namespace Integrity.Presentation.ViewModels;
 
-public partial class DatabaseConfigurationViewModel : ViewModelBase
+public partial class DatabaseConfigurationViewModel(
+    IConnectionProfileService _connectionProfileService) 
+: ViewModelBase
 {
-    private readonly IConnectionProfileService _connectionProfileService;
-    private readonly INavigationService _navigationService;
+    [ObservableProperty] private string? name;
+    [ObservableProperty] private string? server;
+    [ObservableProperty] private string? database;
+    [ObservableProperty] private string? username;
+    [ObservableProperty] private string? password;
+    [ObservableProperty] private bool integratedSecurity;
+    [ObservableProperty] private bool trustCertificate;
 
-    [ObservableProperty] private string? _name;
-    [ObservableProperty] private string? _server;
-    [ObservableProperty] private string? _database;
-    [ObservableProperty] private string? _username;
-    [ObservableProperty] private string? _password;
-
+    [ObservableProperty] private string? _connectionStatus;
+    
     [ObservableProperty] private List<Error> _errors = [];
-    
-    
-    public DatabaseConfigurationViewModel(
-        IConnectionProfileService connectionProfileService,
-        INavigationService navigationService)
-    {
-        _connectionProfileService = connectionProfileService;
-        _navigationService = navigationService;
-    }
 
     [RelayCommand]
     private async Task SaveAsync()
     {
         var profile = new ConnectionProfile
         {
-            Id = Guid.NewGuid(),
-            Name = Name,
             Server = Server,
             Database = Database,
-            Username = Username
+            Username = Username,
+            TrustCertificate = TrustCertificate,
+            IntegratedSecurity = IntegratedSecurity
         };
 
+        var result = _connectionProfileService.ValidateConnectionProfile(profile);
 
-        var credentials = new ConnectionCredentials
-        {
-            Password = Password
-        };
-        
-        var result = await _connectionProfileService.TestConnectionAsync(profile);
-        
         if (!result.IsSuccess)
         {
-            Errors = result.Errors.ToList();
+            Errors = result.Errors;
             return;
         }
-        
-        await _connectionProfileService.SaveConnectionProfileAsync(profile);
 
-        await _navigationService.NavigateToAsync<DatabaseConfigurationViewModel>();
+        var test = await _connectionProfileService.TestConnectionAsync(profile, password);
+
+        if (!test.IsSuccess)
+        {
+            Errors = test.Errors;
+            return;
+        }
+
+        await _connectionProfileService.SaveConnectionProfileAsync(profile);
     }
-    
+
+    [RelayCommand]
+    private async Task TestAsync()
+    {
+        
+        var result = await _connectionProfileService.TestConnectionAsync(new ConnectionProfile
+        {
+            Server = Server,
+            Database = Database,
+            Username = Username,
+            TrustCertificate = TrustCertificate,
+            IntegratedSecurity = IntegratedSecurity
+        }, Password);
+        
+        if (result.IsSuccess)
+        {
+            ConnectionStatus = "Connection successful";
+        }
+        else
+        {
+            ConnectionStatus = string.Join(Environment.NewLine, result.Errors.Select(e => e.Message));
+        }
+    }
+
 }

@@ -19,8 +19,8 @@ public class ApplicationHost
     public static void ConfigureServices(IServiceCollection services)
     {
         services.AddApplication();
-        services.AddInfrastructure();
         services.AddPresentation();
+        services.AddInfrastructure();
         services.AddUi();
     }
 }

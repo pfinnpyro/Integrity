@@ -19,6 +19,10 @@ public partial class App : Avalonia.Application
 
     public override async void OnFrameworkInitializationCompleted()
     {
+        var coordinator = _serviceProvider.GetRequiredService<ApplicationCoordinator>();
+
+        await coordinator.StartAsync();
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
@@ -33,11 +37,7 @@ public partial class App : Avalonia.Application
         {
             singleViewPlatform.MainView = _serviceProvider.GetRequiredService<MainView>();
         }
-                    
-        var coordinator = _serviceProvider.GetRequiredService<ApplicationCoordinator>();
-
-        await coordinator.StartAsync();
-
+        
         base.OnFrameworkInitializationCompleted();
     }
 }

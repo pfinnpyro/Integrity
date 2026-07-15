@@ -1,14 +1,16 @@
 using Integrity.Application.Interfaces;
 using Integrity.Application.Models;
 using Integrity.Application.Models.Configuration;
+using Integrity.Application.Models.Types;
 
 namespace Integrity.Application.Services;
 
 public class ConnectionProfileService (
-    IConnectionProfileStore _connectionProfileStore) : IConnectionProfileService
+    IConnectionProfileStore _connectionProfileStore,
+    IDatabaseConnectionProviderResolver _connectionProviderResolver) : IConnectionProfileService
 {
     
-    public Task<List<ConnectionProfile>> GetAllConnectionProfilesAsync()
+    public Task<OperationResult<List<ConnectionProfile>>> GetAllConnectionProfilesAsync()
     {
         return _connectionProfileStore.GetAllConnectionProfilesAsync();
     }
@@ -56,21 +58,28 @@ public class ConnectionProfileService (
         
         var result = new OperationResult<Unit>();
         
-        if(string.IsNullOrEmpty(profile.Name))
+        if(string.IsNullOrWhiteSpace(profile.Name))
             result.AddError(Errors.InvalidName);
-        if (string.IsNullOrEmpty(profile.Server))
+        if (string.IsNullOrWhiteSpace(profile.Server))
             result.AddError(Errors.InvalidServer);
-        if (string.IsNullOrEmpty(profile.Database))
+        if (string.IsNullOrWhiteSpace(profile.Database))
             result.AddError(Errors.InvalidDatabase);
         
         if(result.Errors.Count > 0)
             return OperationResult<Unit>.Failure(context, result.Errors.ToArray());
 
-        return OperationResult.Success();
+        var providerResult =
+            _connectionProviderResolver.Resolve(profile.Provider);
+        
+        if(!providerResult.IsSuccess)
+            return providerResult;
+        
+        return providerResult.Value.ValidateConnectionProfile(profile);
     }
     
-    public async Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile)
+    public async Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, string password)
     {
-        throw new NotImplementedException();
+        var provider = _connectionProviderResolver.Resolve(profile.Provider);
+        return await provider.TestConnectionAsync(profile, password);
     }
 }
