@@ -1,0 +1,20 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Integrity.Views.DatabaseConfigurationView">
+
+    <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Spacing="12">
+
+        <TextBlock
+            FontSize="26"
+            Text="Database Configuration"/>
+
+        <TextBlock
+            Text="Congratulations. Navigation works."/>
+
+    </StackPanel>
+
+</UserControl>

@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace Integrity.Views;
 
-public partial class ShellView : UserControl
+public partial class DatabaseConfigurationView : UserControl
 {
-    public ShellView()
+    public DatabaseConfigurationView()
     {
         InitializeComponent();
     }

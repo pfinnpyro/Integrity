@@ -11,7 +11,7 @@ public class NavigationService (ShellViewModel shell, IServiceProvider servicePr
         where TViewModel : ViewModelBase
     {
         var viewModel = serviceProvider.GetRequiredService<TViewModel>();
-        shell.CurrentPage = viewModel;
+        shell.CurrentWorkspace = viewModel;
         
         return Task.CompletedTask;
     }

@@ -11,6 +11,7 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddSingleton<ShellViewModel>();
+        services.AddTransient<DatabaseConfigurationViewModel>();
         services.AddTransient<ApplicationCoordinator>();
         services.AddTransient<ApplicationCoordinator>();
         services.AddTransient<INavigationService, NavigationService>();

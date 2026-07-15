@@ -1,6 +1,8 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace Integrity.Presentation.ViewModels;
 
-public class DatabaseConfigurationViewModel : ViewModelBase
+public partial class DatabaseConfigurationViewModel : ViewModelBase
 {
-    
+
 }

@@ -4,5 +4,6 @@ namespace Integrity.Presentation.ViewModels;
 
 public partial class ShellViewModel : ObservableObject
 {
-    [ObservableProperty] private object? currentPage;
+    [ObservableProperty]
+    private ViewModelBase? _currentWorkspace;
 }
