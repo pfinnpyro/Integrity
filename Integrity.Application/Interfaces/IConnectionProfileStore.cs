@@ -14,5 +14,5 @@ public interface IConnectionProfileStore
     
     Task SetActiveConnectionProfileAsync(Guid profileId);
     Task<bool> HasConnectionProfileAsync();
-    Task DeleteConnectionProfile(Guid profileId);
+    Task DeleteConnectionProfileAsync(Guid profileId);
 }

@@ -3,13 +3,13 @@ using Integrity.Application.Models;
 
 namespace Integrity.Application.Services;
 
-public class StartupService(IConnectionProfileStore connectionProfileStore) : IStartupService
+public class StartupService(IConnectionProfileService connectionProfileService) : IStartupService
 {
 
     public async Task<StartupResult> InitializeAsync()
     {
         return new StartupResult(StartupStage.ConfigurationRequired);
-        /*// var profile = await connectionProfileStore
+        /*// var profile = await connectionProfileService
         //     .GetActiveConnectionProfileAsync();
         //
         // if(profile is null)

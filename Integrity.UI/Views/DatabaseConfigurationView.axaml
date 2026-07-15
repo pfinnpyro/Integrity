@@ -1,20 +1,30 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    x:Class="Integrity.Views.DatabaseConfigurationView">
+    xmlns:vm="using:Integrity.Presentation.ViewModels"
+    x:Class="Integrity.Views.DatabaseConfigurationView"
+    x:DataType="vm:DatabaseConfigurationViewModel"
+    >
+    
+    <Design.DataContext>
+        <vm:DatabaseConfigurationViewModel />
+    </Design.DataContext>
 
     <StackPanel
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         Spacing="12">
-
-        <TextBlock
-            FontSize="26"
-            Text="Database Configuration"/>
-
-        <TextBlock
-            Text="Congratulations. Navigation works."/>
-
+        
+        <TextBox PlaceholderText="Name: " Text="{Binding Name}"/>
+        <TextBox PlaceholderText="Server: " Text="{Binding Server}"/>
+        <TextBox PlaceholderText="Database: " Text="{Binding Database}"/>
+        <TextBox PlaceholderText="Username: " Text="{Binding Username}"/>
+        <TextBox PlaceholderText="Password: "/>
+        
+        <Button
+            Content="Save"
+            Command="{Binding SaveAsync}"/>
+        
     </StackPanel>
 
 </UserControl>

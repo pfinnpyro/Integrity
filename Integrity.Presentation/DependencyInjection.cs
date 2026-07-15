@@ -10,11 +10,9 @@ public static class DependencyInjection
     public static IServiceCollection AddPresentation(
         this IServiceCollection services)
     {
-        services.AddSingleton<ShellViewModel>();
+        services.AddTransient<ShellViewModel>();
+        // services.AddTransient<LoginViewModel>();
         services.AddTransient<DatabaseConfigurationViewModel>();
-        services.AddTransient<ApplicationCoordinator>();
-        services.AddTransient<ApplicationCoordinator>();
-        services.AddTransient<INavigationService, NavigationService>();
     
         return services;
     }

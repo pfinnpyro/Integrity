@@ -85,18 +85,17 @@ public class JsonConnectionProfileStore : IConnectionProfileStore
         {
             var json = await File.ReadAllTextAsync(_connectionProfileFilePath);
             return JsonSerializer.Deserialize<List<ConnectionProfile>>(json)
-                   ?? new List<ConnectionProfile>();
+                   ?? [];
         }
 
-        return new List<ConnectionProfile>();
+        return [];
     }
 
-    public async Task DeleteConnectionProfile(Guid profileId)
+    public async Task DeleteConnectionProfileAsync(Guid profileId)
     {
-        var existingProfiles = GetAllConnectionProfilesAsync().Result;
-        existingProfiles.Remove(existingProfiles.FirstOrDefault(x => x.Id == profileId));
+        var existingProfiles = await GetAllConnectionProfilesAsync();
+        existingProfiles.RemoveAll(x => x.Id == profileId);
         var json = JsonSerializer.Serialize(existingProfiles, new JsonSerializerOptions { WriteIndented = true });
-
         await File.WriteAllTextAsync(_connectionProfileFilePath, json);
     }
     

@@ -7,5 +7,4 @@ public enum StartupStage
     AuthenticationRequired,
     Launcher,
     Shell
-
 }

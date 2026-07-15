@@ -1,6 +1,6 @@
 namespace Integrity.Application.Models.Configuration;
 
-public class ConnectionProfile
+public sealed class ConnectionProfile
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     

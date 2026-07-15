@@ -22,7 +22,6 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
             InitialCatalog = _profile.Database,
             UserID = _profile.Username,
             IntegratedSecurity = _profile.IntegratedSecurity,
-
         };
         
         return builder.ConnectionString;
