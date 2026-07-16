@@ -24,31 +24,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71b70b95-437d-4336-b316-f82b0478baed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Integrity.Application/Interfaces/IDatabaseConnectionProviderResolver.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/DatabaseProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Integrity.Application/Services/DatabaseConnectionProviderResolver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrity.UI/Vision.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Integrity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Integrity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/DependencyInjection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileStore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Application/Interfaces/IDatabaseConnectionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Interfaces/IDatabaseConnectionProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/Error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/Error.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/ErrorType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/Types/ErrorType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/OperationResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/OperationResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/Types/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionCredentials.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionCredentials.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Application/Services/ConnectionProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Services/ConnectionProfileService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Desktop/ApplicationHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Desktop/ApplicationHost.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Infrastructure/Configuration/JsonConnectionProfileStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Infrastructure/Configuration/JsonConnectionProfileStore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Infrastructure/Database/SqlConnectionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Infrastructure/Database/SqlConnectionProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/DependencyInjection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/DatabaseConfigurationViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/DatabaseConfigurationViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.UI/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/App.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.UI/Views/DatabaseConfigurationView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/Views/DatabaseConfigurationView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.UI/Views/DatabaseConfigurationView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/Views/DatabaseConfigurationView.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.UI/Views/MainView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/Views/MainView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,61 +120,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000102928354992" />
-      <entry key="S5" value="1.0101187229799446" />
-      <entry key="S10" value="1.1039793254132089" />
-      <entry key="S30" value="2.0181326983798424" />
-      <entry key="S60" value="4.251299656733357" />
-      <entry key="M2" value="9.441982229139157" />
-      <entry key="M5" value="21.151057871202692" />
-      <entry key="M10" value="36.62058390635092" />
-      <entry key="M15" value="56.407034527045504" />
-      <entry key="M30" value="130.1271913552857" />
-      <entry key="H1" value="286.88414908200247" />
-      <entry key="H2" value="623.712643557336" />
-      <entry key="H4" value="1328.1757403410477" />
-      <entry key="D1" value="3781.4422383472183" />
-      <entry key="W1" value="4749.930326947579" />
+      <entry key="MS100" value="1.000147645568865" />
+      <entry key="MS500" value="1.2989483935444108" />
+      <entry key="S2" value="2.873329654595343" />
+      <entry key="S5" value="5.322355702458371" />
+      <entry key="S10" value="8.400139639606145" />
+      <entry key="S30" value="15.740232320869252" />
+      <entry key="S60" value="26.362518533041953" />
+      <entry key="M2" value="44.63852240045164" />
+      <entry key="M5" value="70.50832765185427" />
+      <entry key="M10" value="84.26674793883579" />
+      <entry key="M15" value="89.72387925404173" />
+      <entry key="M30" value="99.20929131763366" />
+      <entry key="H1" value="146.61079539438728" />
+      <entry key="H2" value="355.07432108740556" />
+      <entry key="H4" value="949.8435165752844" />
+      <entry key="D1" value="3612.7699490346013" />
+      <entry key="W1" value="4804.242227615855" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="3.5816403082034945E-47" />
-      <entry key="MS500" value="5.13826375846731E-10" />
-      <entry key="S2" value="0.004761064865924963" />
-      <entry key="S5" value="0.11778311302781887" />
-      <entry key="S10" value="0.3439323285959918" />
-      <entry key="S30" value="0.8369772881974981" />
-      <entry key="S60" value="1.3990561274592765" />
-      <entry key="M2" value="2.3911629761601016" />
-      <entry key="M5" value="4.940131179266033" />
-      <entry key="M10" value="8.496666329826503" />
-      <entry key="M15" value="12.625800626708907" />
-      <entry key="M30" value="26.766298967237855" />
-      <entry key="H1" value="52.30493545543526" />
-      <entry key="H2" value="93.55697847875865" />
-      <entry key="H4" value="159.61138267578718" />
-      <entry key="D1" value="352.57367808509116" />
-      <entry key="W1" value="424.05998714317" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="1.9003831668993135E-277" />
+      <entry key="S30" value="5.8710858027883825E-93" />
+      <entry key="S60" value="9.270211937095038E-47" />
+      <entry key="M2" value="1.7012973113124865E-23" />
+      <entry key="M5" value="2.6388914999367098E-9" />
+      <entry key="M10" value="1.97175063974799E-4" />
+      <entry key="M15" value="0.010247004430670906" />
+      <entry key="M30" value="0.7595474046725962" />
+      <entry key="H1" value="8.81141488134648" />
+      <entry key="H2" value="38.43942602088365" />
+      <entry key="H4" value="102.4007926609645" />
+      <entry key="D1" value="328.01914831535873" />
+      <entry key="W1" value="420.5288514157318" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.4601540555002326E-6" />
-      <entry key="MS500" value="0.09163229751161646" />
-      <entry key="S2" value="0.5538961332224241" />
-      <entry key="S5" value="0.9027832664493354" />
-      <entry key="S10" value="1.3115882566761734" />
-      <entry key="S30" value="2.75604228113373" />
-      <entry key="S60" value="5.530231918202142" />
-      <entry key="M2" value="11.703878224844722" />
-      <entry key="M5" value="25.98506494935137" />
-      <entry key="M10" value="45.03802022197615" />
-      <entry key="M15" value="68.9636883351337" />
-      <entry key="M30" value="156.83238415767877" />
-      <entry key="H1" value="339.13327741380556" />
-      <entry key="H2" value="717.2188261132935" />
-      <entry key="H4" value="1487.7411807144063" />
-      <entry key="D1" value="4133.997460242896" />
-      <entry key="W1" value="5173.987091576698" />
+      <entry key="MS100" value="0.9660789946565389" />
+      <entry key="MS500" value="1.2901053950345904" />
+      <entry key="S2" value="2.868497155810653" />
+      <entry key="S5" value="5.318652168939768" />
+      <entry key="S10" value="8.397158731370041" />
+      <entry key="S30" value="15.738296470765798" />
+      <entry key="S60" value="26.3607879209367" />
+      <entry key="M2" value="44.63695183580938" />
+      <entry key="M5" value="70.50728256677581" />
+      <entry key="M10" value="84.26630747372086" />
+      <entry key="M15" value="89.7336136975904" />
+      <entry key="M30" value="99.96679525800504" />
+      <entry key="H1" value="155.41246627937196" />
+      <entry key="H2" value="393.4925482711321" />
+      <entry key="H4" value="1052.2146044499818" />
+      <entry key="D1" value="3940.7718770777283" />
+      <entry key="W1" value="5224.767875984846" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -209,31 +192,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Integrity.Desktop.executor": "Run",
-    "CidrDebugProfileConversion": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Integrity.Desktop.executor&quot;: &quot;Run&quot;,
+    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.Integrity.Desktop">
     <configuration name="Domain" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />

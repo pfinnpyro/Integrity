@@ -1,3 +1,4 @@
+using System.Security;
 using Integrity.Application.Interfaces;
 using Integrity.Application.Models;
 using Integrity.Application.Models.Configuration;
@@ -77,7 +78,7 @@ public class ConnectionProfileService (
         return providerResult.Value.ValidateConnectionProfile(profile);
     }
     
-    public async Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, string password)
+    public async Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, SecureString password)
     {
         var provider = _connectionProviderResolver.Resolve(profile.Provider);
         return await provider.TestConnectionAsync(profile, password);

@@ -1,3 +1,4 @@
+using System.Security;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Integrity.Application.Interfaces;
@@ -15,7 +16,7 @@ public partial class DatabaseConfigurationViewModel(
     [ObservableProperty] private string? server;
     [ObservableProperty] private string? database;
     [ObservableProperty] private string? username;
-    [ObservableProperty] private string? password;
+    [ObservableProperty] private SecureString? password;
     [ObservableProperty] private bool integratedSecurity;
     [ObservableProperty] private bool trustCertificate;
 

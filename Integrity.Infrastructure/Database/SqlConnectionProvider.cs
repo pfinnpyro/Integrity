@@ -1,3 +1,4 @@
+using System.Security;
 using Integrity.Application.Interfaces;
 using Integrity.Application.Models;
 using Integrity.Application.Models.Configuration;
@@ -11,7 +12,7 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
 {
 
     public DatabaseProvider Provider => DatabaseProvider.MsSqlServer;
-    public string GetConnectionString(ConnectionProfile profile, string password)
+    public string GetConnectionString(ConnectionProfile profile, SecureString password)
     {
         var builder = new SqlConnectionStringBuilder
         {
@@ -24,13 +25,13 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
         if(!profile.IntegratedSecurity)
         {
             builder.UserID = profile.Username;
-            builder.Password = password;
+            builder.Password = password.ToString();
         }
         
         return builder.ConnectionString;
     }
 
-    public async Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, string password)
+    public async Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, SecureString password)
     {
         var context = new OperationContext
         {

@@ -1,3 +1,4 @@
+using System.Security;
 using Integrity.Application.Models;
 using Integrity.Application.Models.Configuration;
 using Integrity.Application.Models.Types;
@@ -12,6 +13,6 @@ public interface IConnectionProfileService
     Task DeleteConnectionProfileAsync(Guid id);
     Task SetActiveConnectionProfileAsync(Guid id);
     OperationResult<Unit> ValidateConnectionProfile(ConnectionProfile profile);
-    Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, string password);
+    Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, SecureString password);
 
 }
