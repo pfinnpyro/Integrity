@@ -3,35 +3,48 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vm="using:Integrity.Presentation.ViewModels"
     x:Class="Integrity.Views.DatabaseConfigurationView"
-    x:DataType="vm:DatabaseConfigurationViewModel"
+    x:DataType="vm:ConnectionProfileViewModel"
     >
-
-    <StackPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Spacing="12">
-        
-        <TextBox PlaceholderText="Name: " Text="{Binding Name}"/>
-        <TextBox PlaceholderText="Server: " Text="{Binding Server}"/>
-        <TextBox PlaceholderText="Database: " Text="{Binding Database}"/>
-        <TextBox PlaceholderText="Username: " Text="{Binding Username}"/>
-        <TextBox PlaceholderText="Password: " Text="{Binding Password}"/>
-        <CheckBox IsChecked="{Binding IntegratedSecurity}"
-                  Content="Integrated Security Enabled?" />
-        <CheckBox IsChecked="{Binding TrustCertificate}" />
-        <Button
-            Content="Test"
-            Command="{Binding TestCommand}" />
-        <Button
-            Content="Save"
-            Command="{Binding SaveCommand}"/>
-        
-        <TextBlock
-            Text="{Binding ConnectionStatus}"
-            Height="200"
-            Width="500"
-            TextWrapping="Wrap"/>
-        
-    </StackPanel>
+    <Grid ColumnDefinitions="250,*">
+        <ListBox Grid.Column='0'
+                 ItemsSource="{Binding Profiles}"
+                 SelectedItem="{Binding SelectedProfile}">
+            
+        </ListBox>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Spacing="12"
+            Grid.Column="1"
+            Margin="20">
+            
+            <ComboBox
+                ItemsSource="{Binding Providers}"
+                SelectedItem="{Binding Provider, Mode=TwoWay}"
+                >
+            </ComboBox>
+            <TextBox PlaceholderText="Name: " Text="{Binding Name}"/>
+            <TextBox PlaceholderText="Server: " Text="{Binding Server}"/>
+            <TextBox PlaceholderText="Database: " Text="{Binding Database}"/>
+            <TextBox PlaceholderText="Username: " Text="{Binding Username}"/>
+            <TextBox PasswordChar="*" PlaceholderText="Password: " Text="{Binding Password}"/>
+            <CheckBox IsChecked="{Binding IntegratedSecurity}"
+                      Content="Integrated Security Enabled?" />
+            <CheckBox IsChecked="{Binding TrustCertificate}" />
+            <Button
+                Content="Test"
+                Command="{Binding TestCommand}" />
+            <Button
+                Content="Save"
+                Command="{Binding SaveCommand}"/>
+            
+            <TextBlock
+                Text="{Binding ConnectionStatus}"
+                Height="200"
+                Width="500"
+                TextWrapping="Wrap"/>
+            
+        </StackPanel>
+    </Grid>
 
 </UserControl>

@@ -30,6 +30,6 @@ public class DatabaseConnectionProviderResolver
                 new Error("DCPR-NR", "DatabaseConnectionProviderResolver", ErrorType.Configuration, "Connection Provider does not exist on system"));
         }
 
-        return OperationResult<IDatabaseConnectionProvider>.Success(connectionProvider);
+        return OperationResult<IDatabaseConnectionProvider>.Success(context, connectionProvider);
     }
 }

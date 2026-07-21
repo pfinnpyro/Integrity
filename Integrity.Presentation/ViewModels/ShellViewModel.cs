@@ -6,4 +6,5 @@ public partial class ShellViewModel : ObservableObject
 {
     [ObservableProperty]
     private ViewModelBase? _currentWorkspace;
+    
 }

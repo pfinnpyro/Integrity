@@ -11,7 +11,7 @@
         <FluentTheme />
     </Application.Styles>
     <Application.DataTemplates>
-        <DataTemplate DataType="vm:DatabaseConfigurationViewModel">
+        <DataTemplate DataType="vm:ConnectionProfileViewModel">
             <views:DatabaseConfigurationView />
         </DataTemplate>
     </Application.DataTemplates>

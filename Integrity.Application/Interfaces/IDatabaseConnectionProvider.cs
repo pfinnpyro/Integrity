@@ -8,8 +8,8 @@ namespace Integrity.Application.Interfaces;
 public interface IDatabaseConnectionProvider
 {
     DatabaseProvider Provider { get; }
-    string GetConnectionString(ConnectionProfile profile, SecureString password);
-    Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, SecureString password);
+    string GetConnectionString(ConnectionProfile profile, string password);
+    Task<OperationResult> TestConnectionAsync(ConnectionProfile profile, string password);
     
-    OperationResult<Unit> ValidateConnectionProfile(ConnectionProfile profile);
+    OperationResult ValidateConnectionProfile(ConnectionProfile profile);
 }

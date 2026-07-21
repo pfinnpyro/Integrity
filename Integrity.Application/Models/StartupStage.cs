@@ -4,6 +4,7 @@ public enum StartupStage
 {
     Loading,
     ConfigurationRequired,
+    DatabaseAuthenticationRequired,
     AuthenticationRequired,
     Launcher,
     Shell

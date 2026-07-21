@@ -24,14 +24,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71b70b95-437d-4336-b316-f82b0478baed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Integrity.UI/Vision.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrity.UI/Windows/SplashWindow.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Integrity.UI/Windows/SplashWindow.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Integrity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Integrity/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileStore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Application/Interfaces/IDatabaseConnectionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Interfaces/IDatabaseConnectionProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionCredentials.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionCredentials.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionCredentials.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/Error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/Error.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/OperationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/OperationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/OperationResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/OperationResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/StartupResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/StartupResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Models/StartupStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Models/StartupStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Services/ApplicationHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Services/ApplicationHost.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Application/Services/ConnectionProfileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Services/ConnectionProfileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Services/DatabaseConnectionProviderResolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Services/DatabaseConnectionProviderResolver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Services/IApplicationHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Services/IApplicationHost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Application/Services/StartupService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Application/Services/StartupService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Infrastructure/Configuration/JsonConnectionProfileStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Infrastructure/Configuration/JsonConnectionProfileStore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integrity.Infrastructure/Database/SqlConnectionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Infrastructure/Database/SqlConnectionProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/DatabaseConfigurationViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/DatabaseConfigurationViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/Navigation/INavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/Navigation/INavigationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/Navigation/NavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/Navigation/NavigationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/Services/ApplicationCoordinator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/Services/ApplicationCoordinator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/DatabaseConfigurationViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/ConnectionProfileViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/ShellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.Presentation/ViewModels/ShellViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.UI/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/App.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.UI/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.UI/Integrity.UI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/Integrity.UI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.UI/Views/DatabaseConfigurationView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.UI/Views/DatabaseConfigurationView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrity.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Integrity.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,23 +93,29 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14295caa5335b4c0437184fea98d619bcae7fec2b39e6986204bb1c585a352/Guid.Windows.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f2b1d92f1ffcf2dabd664473f8c9dafa6039595ac228ce4b75a0f1619c5991/AsyncTaskMethodBuilderT.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4d431e535966d3e8d58aed86698f4938fdfbde11da876f5c3a222aa8c29b1/Task.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69bc68e9420a6e628e801fd8651369ad2af3593c76dcc11a4270ec68d/ExecutionContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6cc3abb8e467477e1755f55edc29dbc9899b9420abb8a51ae8814cfc6a4e/Application.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/752bbcc9cc4f8bd1a0d29d96d43040cdeaeb40f1ef3e19fde544683879d537ef/AsyncRelayCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7734ffb7276f99776a8117f9df2c2ace36b360243e713c1f1f632260348f267f/CallSiteRuntimeResolver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/81deeaaece1f55e6f9a08fc6805b516b36352dc8f7fcb458f92541e9967d13b4/ServiceProviderEngineScope.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8f5e55ab30f2223eda74cadbba28814eb9bad8ac2f39a9808cfcc785c6cd88/AppBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/91abc4166178b9b99c19be91cb4694134796b4fc03a296e7ac0eb2ae6551b6b/DynamicServiceProviderEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9282df70362b17ffae24d589dffe1e9bc7a730f1d7622551e6e964f/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9b35b8a6192a757cff25a4abfa02775322a922350d2a0d25564d5b522ffc8bc/ClassicDesktopStyleApplicationLifetime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9f9efacb2d7225c3beafa7bbeb82ba652aacc3e0faf1a1d8a6a9e8146c6eb240/ServiceProviderServiceExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c794baab3518d05f8546334d672798d62c10be97c2de99a62b39b885a637/TaskContinuation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e67da3987a73fd5b4f14af995a0158b5f71ec250258f6a6238ccf9fccaac/ServiceProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ec944bd49d9befa9caeb70276da5cdefed28f5905acfbee0b81c57b9262bb5/File.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f789418437d3db4a3ae92758c424f20616c8716db4a4c98e740af36d4cde1/CallSiteVisitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/Interfaces/IConnectionProfileStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/Interfaces/IDatabaseConnectionProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/Interfaces/IDatabaseConnectionProviderResolver.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Integrity.Application/Models/Configuration/ConnectionCredentials.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/Models/OperationContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/Models/OperationResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.Application/Services/ApplicationHost.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,6 +132,8 @@
     <setting file="file://$PROJECT_DIR$/Integrity.Presentation/Navigation/NavigationService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.UI/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Integrity.UI/Views/ShellView.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrity.UI/Windows/SplashWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Integrity.UI/Windows/SplashWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
@@ -120,61 +150,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000147645568865" />
-      <entry key="MS500" value="1.2989483935444108" />
-      <entry key="S2" value="2.873329654595343" />
-      <entry key="S5" value="5.322355702458371" />
-      <entry key="S10" value="8.400139639606145" />
-      <entry key="S30" value="15.740232320869252" />
-      <entry key="S60" value="26.362518533041953" />
-      <entry key="M2" value="44.63852240045164" />
-      <entry key="M5" value="70.50832765185427" />
-      <entry key="M10" value="84.26674793883579" />
-      <entry key="M15" value="89.72387925404173" />
-      <entry key="M30" value="99.20929131763366" />
-      <entry key="H1" value="146.61079539438728" />
-      <entry key="H2" value="355.07432108740556" />
-      <entry key="H4" value="949.8435165752844" />
-      <entry key="D1" value="3612.7699490346013" />
-      <entry key="W1" value="4804.242227615855" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000000000000004" />
+      <entry key="S2" value="1.00025310598285" />
+      <entry key="S5" value="1.0694556525504888" />
+      <entry key="S10" value="2.0695496854752733" />
+      <entry key="S30" value="9.70305509501815" />
+      <entry key="S60" value="16.291360659504907" />
+      <entry key="M2" value="23.957197412236436" />
+      <entry key="M5" value="46.95965088350101" />
+      <entry key="M10" value="83.10743967516788" />
+      <entry key="M15" value="113.01207317572812" />
+      <entry key="M30" value="186.50847935641153" />
+      <entry key="H1" value="323.72579327640756" />
+      <entry key="H2" value="577.423022526534" />
+      <entry key="H4" value="1112.3731187943806" />
+      <entry key="D1" value="4088.521920230936" />
+      <entry key="W1" value="5699.6771974566645" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="1.9003831668993135E-277" />
-      <entry key="S30" value="5.8710858027883825E-93" />
-      <entry key="S60" value="9.270211937095038E-47" />
-      <entry key="M2" value="1.7012973113124865E-23" />
-      <entry key="M5" value="2.6388914999367098E-9" />
-      <entry key="M10" value="1.97175063974799E-4" />
-      <entry key="M15" value="0.010247004430670906" />
-      <entry key="M30" value="0.7595474046725962" />
-      <entry key="H1" value="8.81141488134648" />
-      <entry key="H2" value="38.43942602088365" />
-      <entry key="H4" value="102.4007926609645" />
-      <entry key="D1" value="328.01914831535873" />
-      <entry key="W1" value="420.5288514157318" />
+      <entry key="MS100" value="2.564294389691031E-20" />
+      <entry key="MS500" value="1.2072398881603161E-4" />
+      <entry key="S2" value="0.10482102305511638" />
+      <entry key="S5" value="0.40567603947849434" />
+      <entry key="S10" value="0.6369270289597972" />
+      <entry key="S30" value="0.8624515164719316" />
+      <entry key="S60" value="1.0394739053733628" />
+      <entry key="M2" value="1.8978791535092914" />
+      <entry key="M5" value="5.3103620640057665" />
+      <entry key="M10" value="10.033661916002705" />
+      <entry key="M15" value="13.874592983641753" />
+      <entry key="M30" value="24.57539771839975" />
+      <entry key="H1" value="48.2668690493617" />
+      <entry key="H2" value="90.5674650371191" />
+      <entry key="H4" value="161.77940483371856" />
+      <entry key="D1" value="445.56409187364403" />
+      <entry key="W1" value="580.8525878581116" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9660789946565389" />
-      <entry key="MS500" value="1.2901053950345904" />
-      <entry key="S2" value="2.868497155810653" />
-      <entry key="S5" value="5.318652168939768" />
-      <entry key="S10" value="8.397158731370041" />
-      <entry key="S30" value="15.738296470765798" />
-      <entry key="S60" value="26.3607879209367" />
-      <entry key="M2" value="44.63695183580938" />
-      <entry key="M5" value="70.50728256677581" />
-      <entry key="M10" value="84.26630747372086" />
-      <entry key="M15" value="89.7336136975904" />
-      <entry key="M30" value="99.96679525800504" />
-      <entry key="H1" value="155.41246627937196" />
-      <entry key="H2" value="393.4925482711321" />
-      <entry key="H4" value="1052.2146044499818" />
-      <entry key="D1" value="3940.7718770777283" />
-      <entry key="W1" value="5224.767875984846" />
+      <entry key="MS100" value="2.796256421165177E-7" />
+      <entry key="MS500" value="0.048903957492289776" />
+      <entry key="S2" value="0.5128129555237445" />
+      <entry key="S5" value="1.0868030910197284" />
+      <entry key="S10" value="2.437587181344596" />
+      <entry key="S30" value="10.409776349191477" />
+      <entry key="S60" value="17.225239439737546" />
+      <entry key="M2" value="25.772864792926878" />
+      <entry key="M5" value="52.195553968567296" />
+      <entry key="M10" value="93.07686668075371" />
+      <entry key="M15" value="126.82985065515494" />
+      <entry key="M30" value="211.0354725583237" />
+      <entry key="H1" value="371.9444561228232" />
+      <entry key="H2" value="667.9434953506103" />
+      <entry key="H4" value="1274.108577001565" />
+      <entry key="D1" value="4534.063785143799" />
+      <entry key="W1" value="6280.525551762135" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -192,31 +222,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.Integrity.Desktop.executor&quot;: &quot;Run&quot;,
-    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Integrity.Desktop.executor": "Run",
+    "CidrDebugProfileConversion": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "XThreadsFramesViewSplitterKey": "0.4874552",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.Integrity.Desktop">
     <configuration name="Domain" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -343,7 +374,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Modularized project structure and introduced Dependency Injection across layers." />
     <MESSAGE value="Added `DatabaseConfigurationView` and `ConnectionProfileService` for improved configuration handling, introduced `OperationResult` and `Error` models for standardized error management, and updated DI and UI layers accordingly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added `DatabaseConfigurationView` and `ConnectionProfileService` for improved configuration handling, introduced `OperationResult` and `Error` models for standardized error management, and updated DI and UI layers accordingly." />
+    <MESSAGE value="Updated connection handling to use `SecureString` for passwords across services, models, and view models to enhance security. Add Vision.md to map project end-state" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated connection handling to use `SecureString` for passwords across services, models, and view models to enhance security. Add Vision.md to map project end-state" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -357,5 +389,11 @@
         <breakpoint type="CMakeExceptionBreakpoint" />
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="DotNetProject">
+        <watch expression="new System.Collections.Generic.ICollectionDebugView&lt;Integrity.Application.Models.Configuration.ConnectionProfile&gt;(this.&lt;result&gt;5__1.Value).Items[0].TrustCertificate" custom="1" />
+        <watch expression="result" custom="2" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

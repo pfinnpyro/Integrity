@@ -7,12 +7,15 @@ public class NavigationService (ShellViewModel shell, IServiceProvider servicePr
 {
     private readonly ViewModelBase _shell;
     
-    public Task NavigateToAsync<TViewModel>()
+    public async Task NavigateToAsync<TViewModel>(
+        Func<TViewModel, Task> initializer)
         where TViewModel : ViewModelBase
     {
         var viewModel = serviceProvider.GetRequiredService<TViewModel>();
-        shell.CurrentWorkspace = viewModel;
+
+
+        await initializer(viewModel);
         
-        return Task.CompletedTask;
+        shell.CurrentWorkspace = viewModel;
     }
 }

@@ -12,9 +12,9 @@ public interface IConnectionProfileStore
     
     Task<ConnectionProfile?> GetActiveConnectionProfileAsync();
     
-    Task<Guid> SaveConnectionProfileAsync(ConnectionProfile profile);
+    Task<OperationResult<Guid>> SaveConnectionProfileAsync(ConnectionProfile profile);
     
-    Task<OperationResult<Unit>> SetActiveConnectionProfileAsync(Guid profileId);
-    Task<OperationResult<Unit>> HasConnectionProfilesAsync();
-    Task<OperationResult<Unit>> DeleteConnectionProfileAsync(Guid profileId);
+    Task<OperationResult> SetActiveConnectionProfileAsync(Guid profileId);
+    Task<OperationResult> HasConnectionProfilesAsync();
+    Task<OperationResult> DeleteConnectionProfileAsync(Guid profileId);
 }

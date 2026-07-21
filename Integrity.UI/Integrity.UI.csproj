@@ -24,4 +24,10 @@
     <ItemGroup>
       <ProjectReference Include="..\Integrity.Presentation\Integrity.Presentation.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Windows\SplashWindow.axaml.cs">
+        <DependentUpon>SplashWindow.axaml.axaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
 </Project>

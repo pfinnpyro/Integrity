@@ -3,25 +3,64 @@ using Integrity.Application.Models.Types;
 
 namespace Integrity.Application.Models;
 
-public sealed class OperationResult<T>
+/**
+ * TODO: Restructure OperationContext funcationality to allow responsibility-centered traces segregated by Operation.
+ *    Will require implementation of separate class function for assigning parent operations and breaking appropriately.
+ */
+public class OperationResult
 {
-    public bool IsSuccess { get; private set; }
-    public T? Value { get; init; }
-    
-    public OperationContext? Context { get; init; }
+    public bool IsSuccess { get; protected init; }
+
+    public OperationContext Context { get; init; } = null!;
+
     public List<Error> Errors { get; init; } = [];
 
-    public void AddError(Error error)
+    public static OperationResult Success(OperationContext context)
     {
-        Errors.Add(error);
-        IsSuccess = false;
+        return new()
+        {
+            IsSuccess = true,
+            Context = context
+        };
     }
 
-    public static OperationResult<T> Failure(
+    public static OperationResult Failure(
         OperationContext context,
         params Error[] errors)
     {
-        return new OperationResult<T>
+        return new()
+        {
+            IsSuccess = false,
+            Context = context,
+            Errors = errors.ToList()
+        };
+    }
+
+    public OperationResult ToFailure()
+    {
+        return Failure(Context!, Errors.ToArray());
+    }
+}
+
+public sealed class OperationResult<T> : OperationResult
+{
+    public T? Value { get; init; }
+
+    public static OperationResult<T> Success(OperationContext context, T value)
+    {
+        return new()
+        {
+            IsSuccess = true,
+            Value = value,
+            Context = context
+        };
+    }
+
+    public new static OperationResult<T> Failure(
+        OperationContext context,
+        params Error[] errors)
+    {
+        return new()
         {
             IsSuccess = false,
             Context = context,
@@ -29,19 +68,8 @@ public sealed class OperationResult<T>
         };
     }
     
-    public static OperationResult<T> Success(T value)
+    public OperationResult<TNew> ToFailure<TNew>()
     {
-        
-        return new OperationResult<T>
-        {
-            IsSuccess = true,
-            Value = value
-        };
+        return OperationResult<TNew>.Failure(Context!, Errors.ToArray());
     }
-}
-
-public static class OperationResult
-{
-    public static OperationResult<Unit> Success() =>
-        OperationResult<Unit>.Success(Unit.Value);
 }

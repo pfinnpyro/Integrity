@@ -1,7 +1,9 @@
 using System;
+using System.Threading.Tasks;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Integrity.Presentation.Services;
+using Integrity.UI;
 using Integrity.Views;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,14 +21,14 @@ public partial class App : Avalonia.Application
 
     public override async void OnFrameworkInitializationCompleted()
     {
-        var coordinator = _serviceProvider.GetRequiredService<ApplicationCoordinator>();
-
-        await coordinator.StartAsync();
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            var splash = new SplashWindow();
+            desktop.MainWindow = splash;
 
+            splash.Show();
+            _ = StartApplicationAsync(desktop, splash);
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime singleViewFactoryApplicationLifetime)
         {
@@ -39,5 +41,18 @@ public partial class App : Avalonia.Application
         }
         
         base.OnFrameworkInitializationCompleted();
+        
+    }
+
+    private async Task StartApplicationAsync(IClassicDesktopStyleApplicationLifetime desktop,
+        SplashWindow splash)
+    {
+        var coordinator = _serviceProvider.GetRequiredService<ApplicationCoordinator>();
+        await coordinator.StartAsync();
+        var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+        desktop.MainWindow = mainWindow;
+        mainWindow.Show();
+        splash.Close();
+        
     }
 }

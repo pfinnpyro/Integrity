@@ -12,7 +12,7 @@ public static class DependencyInjection
     {
         services.AddSingleton<ShellViewModel>();
         // services.AddTransient<LoginViewModel>();
-        services.AddTransient<DatabaseConfigurationViewModel>();
+        services.AddTransient<ConnectionProfileViewModel>();
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<ApplicationCoordinator>();
         return services;

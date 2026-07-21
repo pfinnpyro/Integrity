@@ -12,7 +12,7 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
 {
 
     public DatabaseProvider Provider => DatabaseProvider.MsSqlServer;
-    public string GetConnectionString(ConnectionProfile profile, SecureString password)
+    public string GetConnectionString(ConnectionProfile profile, string password)
     {
         var builder = new SqlConnectionStringBuilder
         {
@@ -25,13 +25,13 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
         if(!profile.IntegratedSecurity)
         {
             builder.UserID = profile.Username;
-            builder.Password = password.ToString();
+            builder.Password = password;
         }
         
         return builder.ConnectionString;
     }
 
-    public async Task<OperationResult<Unit>> TestConnectionAsync(ConnectionProfile profile, SecureString password)
+    public async Task<OperationResult> TestConnectionAsync(ConnectionProfile profile, string password)
     {
         var context = new OperationContext
         {
@@ -41,10 +41,16 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
         
         try
         {
-            var connectionString = GetConnectionString(profile, password);
-            await using var connection = new SqlConnection(connectionString);
-            await connection.OpenAsync();
-            return OperationResult.Success();
+            var validation = ValidateConnectionProfile(profile);
+            if (validation.IsSuccess)
+            {
+                var connectionString = GetConnectionString(profile, password);
+                await using var connection = new SqlConnection(connectionString);
+                await connection.OpenAsync();
+                return OperationResult.Success(context);
+            }
+            return validation.ToFailure();
+            
         }
         catch (SqlException ex)
         {
@@ -66,7 +72,7 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
         }
     }
     
-    public OperationResult<Unit> ValidateConnectionProfile(ConnectionProfile profile)
+    public OperationResult ValidateConnectionProfile(ConnectionProfile profile)
     {
         var context = new OperationContext
         {
@@ -74,18 +80,18 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
             EntityType = nameof(ConnectionProfile)
         };
         
-        var result = new OperationResult<Unit>();
+        var errors = new List<Error>();
         
         if(string.IsNullOrEmpty(profile.Name))
-            result.AddError(Errors.InvalidName);
+            errors.Add(Errors.InvalidName);
         if (string.IsNullOrEmpty(profile.Server))
-            result.AddError(Errors.InvalidServer);
+            errors.Add(Errors.InvalidServer);
         if (string.IsNullOrEmpty(profile.Database))
-            result.AddError(Errors.InvalidDatabase);
+            errors.Add(Errors.InvalidDatabase);
         
-        if(result.Errors.Count > 0)
-            return OperationResult<Unit>.Failure(context, result.Errors.ToArray());
+        if(errors.Count > 0)
+            return OperationResult.Failure(context, errors.ToArray());
 
-        return OperationResult.Success();
+        return OperationResult.Success(context);
     }
 }

@@ -13,11 +13,12 @@ public class ApplicationCoordinator(IApplicationHost applicationHost, INavigatio
 
         switch (result.Stage)
         {
-            case StartupStage.AuthenticationRequired:
-                // await navigationService.NavigateToAsync<LoginViewModel>();
-                break;
             case StartupStage.ConfigurationRequired:
-                await navigationService.NavigateToAsync<DatabaseConfigurationViewModel>();
+            case StartupStage.DatabaseAuthenticationRequired:
+                await navigationService.NavigateToAsync<ConnectionProfileViewModel>(vm => vm.LoadProfilesAsync());
+                break;
+            
+            case StartupStage.AuthenticationRequired:
                 break;
         }
     }

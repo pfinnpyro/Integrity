@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Integrity.Views.SplashWindow"
+        Width="400"
+        Height="250"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        ShowInTaskbar="False"
+        SystemDecorations="None">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <TextBlock Text="INTEGRITY"
+                       FontSize="32"
+                       HorizontalAlignment="Center"/>
+
+            <ProgressBar IsIndeterminate="True"
+                         Width="250"
+                         Margin="0,25,0,0"/>
+
+            <TextBlock Text="Initializing..."
+                       HorizontalAlignment="Center"
+                       Margin="0,15,0,0"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

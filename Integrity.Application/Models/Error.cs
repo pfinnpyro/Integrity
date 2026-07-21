@@ -29,4 +29,10 @@ public class Errors
             "Connection Profile Service",
             Types.ErrorType.Validation,
             "Invalid Password");
+    
+    public static readonly Error InvalidProvider =
+        new("005",
+            "Connection Profile Service",
+            Types.ErrorType.Validation,
+            "Invalid Provider");
 }
