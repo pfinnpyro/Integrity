@@ -4,7 +4,7 @@ using Integrity.Application.Models;
 namespace Integrity.Application.Services;
 
 public class StartupService(IConnectionProfileService connectionProfileService, 
-    IDatabaseConnectionProviderResolver providerResolver) : IStartupService
+    IDatabaseProviderResolver providerResolver) : IStartupService
 {
 
     public async Task<StartupResult> InitializeAsync()

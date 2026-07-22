@@ -1,5 +1,6 @@
 using Integrity.Views;
 using Microsoft.Extensions.DependencyInjection;
+using MainWindow = Integrity.UI.Windows.MainWindow;
 
 namespace Integrity.UI;
 

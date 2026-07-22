@@ -12,7 +12,7 @@ public class JsonConnectionProfileStore : IConnectionProfileStore
 
     
     private readonly string _connectionProfileFilePath;
-    private readonly SqlConnectionProvider _connectionProvider;
+    private readonly SqlDatabaseProvider _databaseProvider;
 
     public JsonConnectionProfileStore()
     {
@@ -42,7 +42,7 @@ public class JsonConnectionProfileStore : IConnectionProfileStore
 
             foreach (var profile in profiles.Value)
             {
-                var validation = _connectionProvider.ValidateConnectionProfile(profile);
+                var validation = _databaseProvider.ValidateConnectionProfile(profile);
                 if (!validation.IsSuccess)
                 {
                     return OperationResult.Failure(context, validation.Errors.ToArray());

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
@@ -6,5 +6,18 @@
         <Nullable>enable</Nullable>
         <RootNamespace>Integrity.API</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Health\Responses\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Integrity.Application\Integrity.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Http" />
+      <PackageReference Include="Microsoft.AspNetCore.WebUtilities" />
+    </ItemGroup>
 
 </Project>

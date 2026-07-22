@@ -5,17 +5,17 @@ using Integrity.Application.Models.Types;
 
 namespace Integrity.Application.Services;
 
-public class DatabaseConnectionProviderResolver
-    : IDatabaseConnectionProviderResolver
+public class DatabaseProviderResolver
+    : IDatabaseProviderResolver
 {
-    private readonly IEnumerable<IDatabaseConnectionProvider> _providers;
+    private readonly IEnumerable<IDatabaseProvider> _providers;
     
-    public DatabaseConnectionProviderResolver(IEnumerable<IDatabaseConnectionProvider> providers)
+    public DatabaseProviderResolver(IEnumerable<IDatabaseProvider> providers)
     {
         _providers = providers;
     }
     
-    public OperationResult<IDatabaseConnectionProvider> Resolve(DatabaseProvider provider)
+    public OperationResult<IDatabaseProvider> Resolve(DatabaseProvider provider)
     {
         var context = new OperationContext
         {
@@ -26,10 +26,10 @@ public class DatabaseConnectionProviderResolver
 
         if (connectionProvider is null)
         {
-            return OperationResult<IDatabaseConnectionProvider>.Failure(context,
+            return OperationResult<IDatabaseProvider>.Failure(context,
                 new Error("DCPR-NR", "DatabaseConnectionProviderResolver", ErrorType.Configuration, "Connection Provider does not exist on system"));
         }
 
-        return OperationResult<IDatabaseConnectionProvider>.Success(context, connectionProvider);
+        return OperationResult<IDatabaseProvider>.Success(context, connectionProvider);
     }
 }

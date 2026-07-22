@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace Integrity.Views;
 
-public partial class DatabaseConfigurationView : UserControl
+public partial class ConnectionProfileView : UserControl
 {
-    public DatabaseConfigurationView()
+    public ConnectionProfileView()
     {
         InitializeComponent();
     }

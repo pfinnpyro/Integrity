@@ -6,6 +6,7 @@ using Integrity.Presentation.Services;
 using Integrity.UI;
 using Integrity.Views;
 using Microsoft.Extensions.DependencyInjection;
+using MainWindow = Integrity.UI.Windows.MainWindow;
 
 namespace Integrity;
 

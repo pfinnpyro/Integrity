@@ -4,7 +4,7 @@ using Integrity.Application.Models.Types;
 
 namespace Integrity.Application.Services;
 
-public class ApplicationHost (IStartupService startupService) : IApplicationHost
+public class ApplicationHost (IStartupService startupService, HttpConsumer httpConsumer) : IApplicationHost
 {
     public ConnectionProfile? ActiveConnectionProfile {
         get;
@@ -13,6 +13,24 @@ public class ApplicationHost (IStartupService startupService) : IApplicationHost
     
     public async Task<StartupResult> StartAsync()
     {
+        var context = new OperationContext
+        {
+            Operation = "API Liveliness Check"
+        };
+        
+        try
+        {
+            var response = await httpConsumer.FromGetAsync(context);
+            
+            if(!response.IsSuccessStatusCode)
+            {
+                return new StartupResult(StartupStage.ApiError);
+            }
+        }
+        catch (Exception ex)
+        {
+            return new StartupResult(StartupStage.ApiError);
+        }
         var result = await startupService.InitializeAsync();
         
         if (result.Stage == StartupStage.DatabaseAuthenticationRequired)

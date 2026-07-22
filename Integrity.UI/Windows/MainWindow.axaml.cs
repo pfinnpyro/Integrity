@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Integrity.Presentation.ViewModels;
 
-namespace Integrity.Views;
+namespace Integrity.UI.Windows;
 
 public partial class MainWindow : Window
 {

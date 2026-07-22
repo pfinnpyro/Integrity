@@ -15,6 +15,9 @@
     <PackageVersion Include="Avalonia.Browser" Version="12.1.0" />
     <PackageVersion Include="Avalonia.Android" Version="12.1.0" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageVersion Include="Microsoft.AspNetCore" Version="2.3.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.Http" Version="2.3.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.10" />
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="7.1.0-preview2.26190.5" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0-preview.6.26359.118" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.15" />

@@ -7,5 +7,6 @@ public enum StartupStage
     DatabaseAuthenticationRequired,
     AuthenticationRequired,
     Launcher,
-    Shell
+    Shell,
+    ApiError
 }

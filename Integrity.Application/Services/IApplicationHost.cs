@@ -10,4 +10,9 @@ public interface IApplicationHost
     ConnectionProfile? ActiveConnectionProfile { get; }
     
     Task ConnectAsync(ConnectionProfile profile);
+    
+    OperationResult ActivateConnectionProfile(ConnectionProfile profile);
+    
+
+    
 }

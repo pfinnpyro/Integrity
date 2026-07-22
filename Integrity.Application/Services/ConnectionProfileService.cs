@@ -8,7 +8,7 @@ namespace Integrity.Application.Services;
 
 public class ConnectionProfileService (
     IConnectionProfileStore _connectionProfileStore,
-    IDatabaseConnectionProviderResolver _connectionProviderResolver) : IConnectionProfileService
+    IDatabaseProviderResolver providerResolver) : IConnectionProfileService
 {
     
     public Task<OperationResult<List<ConnectionProfile>>> GetAllConnectionProfilesAsync()
@@ -70,7 +70,7 @@ public class ConnectionProfileService (
             return OperationResult.Failure(context, errors.ToArray());
 
         var providerResult =
-            _connectionProviderResolver.Resolve(profile.Provider);
+            providerResolver.Resolve(profile.Provider);
         
         if(!providerResult.IsSuccess)
             return providerResult.ToFailure();
@@ -80,7 +80,7 @@ public class ConnectionProfileService (
     
     public async Task<OperationResult> TestConnectionAsync(ConnectionProfile profile, string password)
     {
-        var provider = _connectionProviderResolver.Resolve(profile.Provider);
-        return await provider.Value.TestConnectionAsync(profile, password);
+        var provider = providerResolver.Resolve(profile.Provider);
+        return await provider.Value.CheckHealthAsync(profile, password);
     }
 }

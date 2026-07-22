@@ -5,12 +5,16 @@ using CommunityToolkit.Mvvm.Input;
 using Integrity.Application.Interfaces;
 using Integrity.Application.Models;
 using Integrity.Application.Models.Configuration;
+using Integrity.Application.Services;
 using Integrity.Presentation.Navigation;
 
 namespace Integrity.Presentation.ViewModels;
 
 public partial class ConnectionProfileViewModel(
-    IConnectionProfileService _connectionProfileService) 
+    IConnectionProfileService _connectionProfileService,
+    IDatabaseProvider databaseProvider,
+    INavigationService _navigationService,
+    IApplicationHost _applicationHost) 
 : ViewModelBase
 {
     
@@ -52,7 +56,7 @@ public partial class ConnectionProfileViewModel(
             return;
         }
 
-        var test = await _connectionProfileService.TestConnectionAsync(profile, _password);
+        var test = await databaseProvider.CheckHealthAsync(profile, _password);
 
         if (!test.IsSuccess)
         {
@@ -67,7 +71,7 @@ public partial class ConnectionProfileViewModel(
     private async Task TestAsync()
     {
         
-        var result = await _connectionProfileService.TestConnectionAsync(new ConnectionProfile
+        var result = await databaseProvider.CheckHealthAsync(new ConnectionProfile
         {
             Name = Name,
             Server = Server,
@@ -126,6 +130,23 @@ public partial class ConnectionProfileViewModel(
     private async Task RefreshProfilesAsync()
     {
         await LoadProfilesAsync();
+    }
+
+    [RelayCommand]
+    private async Task ConnectAsync()
+    {
+        var result = await databaseProvider.CheckHealthAsync(
+            SelectedProfile,
+            Password);
+
+        if (!result.IsSuccess)
+        {
+            Errors.AddRange(result.Errors);
+            return;
+        }
+        _applicationHost.ActivateConnectionProfile(SelectedProfile);
+        
+        await _navigationService.NavigateAsync<ConnectionProfileView>();
     }
 
 }

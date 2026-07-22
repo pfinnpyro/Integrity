@@ -7,5 +7,6 @@ public enum ErrorType
     BusinessRule,
     Infrastructure,
     Security,
-    Unknown
+    Unknown,
+    NonExecution
 }

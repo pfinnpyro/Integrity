@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Security;
 using Integrity.Application.Interfaces;
 using Integrity.Application.Models;
@@ -8,7 +9,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Integrity.Infrastructure.Database;
 
-public class SqlConnectionProvider : IDatabaseConnectionProvider
+public class SqlDatabaseProvider : IDatabaseProvider
 {
 
     public DatabaseProvider Provider => DatabaseProvider.MsSqlServer;
@@ -31,7 +32,7 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
         return builder.ConnectionString;
     }
 
-    public async Task<OperationResult> TestConnectionAsync(ConnectionProfile profile, string password)
+    public async Task<OperationResult<DatabaseMetadata>> CheckHealthAsync(ConnectionProfile profile, string password)
     {
         var context = new OperationContext
         {
@@ -42,30 +43,37 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
         try
         {
             var validation = ValidateConnectionProfile(profile);
+            
             if (validation.IsSuccess)
             {
                 var connectionString = GetConnectionString(profile, password);
                 await using var connection = new SqlConnection(connectionString);
                 await connection.OpenAsync();
-                return OperationResult.Success(context);
+                
+                return OperationResult<DatabaseMetadata>.Success(context, new DatabaseMetadata
+                (
+                    nameof(SqlDatabaseProvider),
+                    connection.ServerVersion,
+                    connection.Database
+                ));
             }
-            return validation.ToFailure();
+            return validation.ToFailure<DatabaseMetadata>();
             
         }
         catch (SqlException ex)
         {
-            return OperationResult<Unit>.Failure(context, new Error(
+            return OperationResult<DatabaseMetadata>.Failure(context, new Error(
                 "1001",
-                nameof(SqlConnectionProvider),
+                nameof(SqlDatabaseProvider),
                 ErrorType.Infrastructure,
                 ex.Message
                 ));
         }
         catch (Exception ex)
         {
-            return OperationResult<Unit>.Failure(context, new Error(
+            return OperationResult<DatabaseMetadata>.Failure(context, new Error(
                 "1002",
-                nameof(SqlConnectionProvider),
+                nameof(SqlDatabaseProvider),
                 ErrorType.Infrastructure,
                 ex.Message
                 ));
@@ -93,5 +101,20 @@ public class SqlConnectionProvider : IDatabaseConnectionProvider
             return OperationResult.Failure(context, errors.ToArray());
 
         return OperationResult.Success(context);
+    }
+    
+    public Task<DatabaseMetadata> GetMetadataAsync()
+    {
+        throw new NotImplementedException();
+    }
+    
+    public async Task<DbConnection> OpenConnectionAsync()
+    {
+        // TODO: OpenAsync from **what**? We need a ConnectionString pulled in from somewhere
+        var connection = new SqlConnection();
+        
+        await connection.OpenAsync();
+
+        return connection;
     }
 }

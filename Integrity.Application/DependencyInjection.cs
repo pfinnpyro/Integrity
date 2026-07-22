@@ -12,8 +12,8 @@ public static class DependencyInjection
         services.AddTransient<IStartupService, StartupService>();
         services.AddSingleton<IConnectionProfileService, ConnectionProfileService>();
         services.AddSingleton<IApplicationHost, ApplicationHost>();
-        services.AddTransient<IDatabaseConnectionProviderResolver,
-            DatabaseConnectionProviderResolver>();
+        services.AddTransient<IDatabaseProviderResolver,
+            DatabaseProviderResolver>();
         // Application services
 
         return services;
